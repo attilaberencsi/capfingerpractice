@@ -1,0 +1,6 @@
+code,criticality,name,descr
+I,90,in_process,in_process
+R,6,resolved,resolved
+C,3,closed,closed
+A,7,assigned,assigned
+N,23,new,new

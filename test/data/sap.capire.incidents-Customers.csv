@@ -1,0 +1,11 @@
+ID,firstName,lastName,email,phone,creditCardNo,createdAt,createdBy,modifiedAt,modifiedBy
+Customers-3864485,firstName-3864485,lastName-3864485,email-3864485,phone-3864485,ex ^[1-9]\d{15}$,2019-01-21T00:00:00.000Z,createdBy.2atut@example.com,2023-07-30T00:00:00.000Z,modifiedBy.2atut@example.com
+Customers-26221140,firstName-26221140,lastName-26221140,email-26221140,phone-26221140,ex ^[1-9]\d{15}$,2007-09-21T00:00:00.000Z,createdBy.fm0d0@example.org,2020-07-04T00:00:00.000Z,modifiedBy.fm0d0@example.net
+Customers-26221141,firstName-26221141,lastName-26221141,email-26221141,phone-26221141,ex ^[1-9]\d{15}$,2014-10-31T00:00:00.000Z,createdBy.fm0d1@example.com,2005-05-29T00:00:00.000Z,modifiedBy.fm0d1@example.net
+Customers-26221142,firstName-26221142,lastName-26221142,email-26221142,phone-26221142,ex ^[1-9]\d{15}$,2015-12-10T00:00:00.000Z,createdBy.fm0d2@example.com,2016-12-01T00:00:00.000Z,modifiedBy.fm0d2@example.org
+Customers-26221143,firstName-26221143,lastName-26221143,email-26221143,phone-26221143,ex ^[1-9]\d{15}$,2002-02-08T00:00:00.000Z,createdBy.fm0d3@example.org,2006-02-21T00:00:00.000Z,modifiedBy.fm0d3@example.net
+Customers-26221144,firstName-26221144,lastName-26221144,email-26221144,phone-26221144,ex ^[1-9]\d{15}$,2021-08-27T00:00:00.000Z,createdBy.fm0d4@example.org,2003-02-10T00:00:00.000Z,modifiedBy.fm0d4@example.org
+Customers-26221145,firstName-26221145,lastName-26221145,email-26221145,phone-26221145,ex ^[1-9]\d{15}$,2000-03-22T00:00:00.000Z,createdBy.fm0d5@example.com,2011-07-04T00:00:00.000Z,modifiedBy.fm0d5@example.com
+Customers-26221146,firstName-26221146,lastName-26221146,email-26221146,phone-26221146,ex ^[1-9]\d{15}$,2003-10-13T00:00:00.000Z,createdBy.fm0d6@example.org,2008-02-01T00:00:00.000Z,modifiedBy.fm0d6@example.com
+Customers-26221147,firstName-26221147,lastName-26221147,email-26221147,phone-26221147,ex ^[1-9]\d{15}$,2020-12-22T00:00:00.000Z,createdBy.fm0d7@example.net,2013-12-26T00:00:00.000Z,modifiedBy.fm0d7@example.net
+Customers-26221148,firstName-26221148,lastName-26221148,email-26221148,phone-26221148,ex ^[1-9]\d{15}$,2016-06-18T00:00:00.000Z,createdBy.fm0d8@example.net,2023-07-14T00:00:00.000Z,modifiedBy.fm0d8@example.net
