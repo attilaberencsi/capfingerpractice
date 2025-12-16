@@ -21,8 +21,8 @@ annotate ProcessorService.Incidents with @(UI: {
     LineItem           : [
         {Value: title},
         {Value: customer},
-        {Value: urgency},
-        {Value: status},
+        {Value: urgency_code},
+        {Value: status_code},
         {Value: createdAt},
         {Value: createdBy}
     ],
@@ -48,8 +48,9 @@ annotate ProcessorService.Incidents with @(UI: {
     ],
 
     FieldGroup #Details: {Data: [
-        {Value: urgency},
-        {Value: statusus},
+        {Value: title},
+        {Value: urgency_code},
+        {Value: status_code},
         {Value: createdBy},
         {Value: createdAt}
     ]}
@@ -155,8 +156,8 @@ annotate AdminService.Incidents with @(UI: {
     LineItem           : [
         {Value: title},
         {Value: customer},
-        {Value: urgency},
-        {Value: status},
+        {Value: urgency_code},
+        {Value: status_code},
         {Value: createdAt},
         {Value: createdBy}
     ],
@@ -182,8 +183,9 @@ annotate AdminService.Incidents with @(UI: {
     ],
 
     FieldGroup #Details: {Data: [
-        {Value: urgency},
-        {Value: statusus},
+        {Value: title},        
+        {Value: urgency_code},
+        {Value: status_code},
         {Value: createdBy},
         {Value: createdAt}
     ]}
