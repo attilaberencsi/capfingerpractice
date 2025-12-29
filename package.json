@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "dependencies": {
+    "@cap-js/hana": "^2",
     "@sap/cds": "^9",
     "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
     "@sapui5/ts-types": "^1.92.2",
@@ -44,6 +45,9 @@
             }
           }
         }
+      },
+      "[production]": {
+        "db": "hana"
       }
     }
   }
