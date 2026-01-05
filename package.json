@@ -14,12 +14,17 @@
   "devDependencies": {
     "@cap-js/cds-test": "^0.4.1",
     "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9",
     "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
     "start": "cds-serve",
     "watch-incidents": "cds watch --open com.sapdev.eu.incidents/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "test": "npx jest tests/test.js"
+    "test": "npx jest tests/test.js",
+    "cds-up": "cds up",
+    "cds-add-mta": "cds add mta",
+    "cf-build": "mbt build",
+    "cf-deploy": "cf deploy"
   },
   "private": true,
   "workspaces": [
