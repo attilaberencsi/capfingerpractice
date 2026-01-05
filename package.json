@@ -24,7 +24,7 @@
     "cds-up": "cds up",
     "cds-add-mta": "cds add mta",
     "cf-build": "mbt build",
-    "cf-deploy": "cf deploy"
+    "cf-deploy": "cf deploy mta_archives/incident-management_1.0.1.mtar"
   },
   "private": true,
   "workspaces": [
