@@ -34,8 +34,11 @@ modules:
     path: gen/db
     parameters:
       buildpack: nodejs_buildpack
+      app-name: incident-management-db
     requires:
       - name: incident-management-db
+        properties:
+          TARGET_CONTAINER: '~{hdi-service-name}'
 
   - name: incident-management-app-deployer
     type: com.sap.application.content
@@ -65,8 +68,7 @@ modules:
       commands:
         - npm ci
         - npm run build
-      supported-platforms:
-        []
+      supported-platforms: []
 
   - name: incident-management-destinations
     type: com.sap.application.content
@@ -111,21 +113,21 @@ resources:
         xsappname: incident-management-${org}-${space}
         tenant-mode: dedicated
         role-collections:
-          - name: 'support (incident-management ${org}-${space})'
-            description: 'generated'
+          - name: "support (incident-management ${org}-${space})"
+            description: "generated"
             role-template-references:
-              - '$XSAPPNAME.support'
-          - name: 'admin (incident-management ${org}-${space})'
-            description: 'generated'
+              - "$XSAPPNAME.support"
+          - name: "admin (incident-management ${org}-${space})"
+            description: "generated"
             role-template-references:
-              - '$XSAPPNAME.admin'
+              - "$XSAPPNAME.admin"
   - name: incident-management-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
-      service-plan: schema
-      config:
-        schema: INCIDENT
+      service-plan: hdi-shared
+    properties:
+      hdi-service-name: ${service-name}
   - name: incident-management-destination
     type: org.cloudfoundry.managed-service
     parameters:
