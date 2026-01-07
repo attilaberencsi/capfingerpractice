@@ -25,7 +25,7 @@
     "cds-add-mta": "cds add mta",
     "cf-build": "mbt build",
     "cf-deploy": "cf deploy mta_archives/incident-management_1.0.2.mtar",
-    "cf-undeploy": "cf undeploy mta_archives/incident-management_1.0.2.mtar --delete-services --delete-service-keys"
+    "cf-undeploy": "cf undeploy incident-management --delete-services --delete-service-keys"
   },
   "private": true,
   "workspaces": [
