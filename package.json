@@ -1,7 +1,7 @@
 {
   "name": "incident-management",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
+  "version": "1.0.2",
+  "description": "Incident Management",
   "dependencies": {
     "@cap-js/hana": "^2",
     "@sap/cds": "^9",
@@ -24,7 +24,8 @@
     "cds-up": "cds up",
     "cds-add-mta": "cds add mta",
     "cf-build": "mbt build",
-    "cf-deploy": "cf deploy mta_archives/incident-management_1.0.1.mtar"
+    "cf-deploy": "cf deploy mta_archives/incident-management_1.0.2.mtar",
+    "cf-undeploy": "cf undeploy mta_archives/incident-management_1.0.2.mtar --delete-services --delete-service-keys"
   },
   "private": true,
   "workspaces": [

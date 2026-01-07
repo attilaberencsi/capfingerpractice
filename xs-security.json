@@ -2,18 +2,18 @@
   "scopes": [
     {
       "name": "$XSAPPNAME.support",
-      "description": "Support"
+      "description": "Support Scope"
     },
     {
       "name": "$XSAPPNAME.admin",
-      "description": "Admin"
+      "description": "Admin Scope"
     }
   ],
   "attributes": [],
   "role-templates": [
     {
       "name": "IncidentSupport",
-      "description": "generated",
+      "description": "Incident Support Role Template",
       "scope-references": [
         "$XSAPPNAME.support"
       ],
@@ -21,7 +21,7 @@
     },
     {
       "name": "IncidentAdmin",
-      "description": "generated",
+      "description": "Incident Admin Role Template",
       "scope-references": [
         "$XSAPPNAME.admin"
       ],
