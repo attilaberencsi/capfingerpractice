@@ -19,6 +19,7 @@ service ProcessorService {
 service AdminService {
     @odata.draft.enabled
     entity Customers as projection on my.Customers;
+
     @odata.draft.enabled
     entity Incidents as projection on my.Incidents;
 }

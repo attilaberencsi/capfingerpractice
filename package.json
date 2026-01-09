@@ -1,7 +1,9 @@
 {
   "name": "incident-management",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Incident Management",
+  "repository": "https://github.com/attilaberencsi/capfingerpractice",
+  "license": "MIT",  
   "dependencies": {
     "@cap-js/hana": "^2",
     "@sap/cds": "^9",
@@ -15,17 +17,18 @@
     "@cap-js/cds-test": "^0.4.1",
     "@cap-js/sqlite": "^2",
     "@sap/cds-dk": "^9",
-    "cds-plugin-ui5": "^0.13.0"
+    "cds-plugin-ui5": "^0.13.0",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
-    "start": "cds-serve",
+    "start": "cds-serve", 
     "watch-incidents": "cds watch --open com.sapdev.eu.incidents/index.html?sap-ui-xx-viewCache=false --livereload false",
     "test": "npx jest tests/test.js",
-    "cds-up": "cds up",
-    "cds-add-mta": "cds add mta",
-    "cf-build": "mbt build",
-    "cf-deploy": "cf deploy mta_archives/incident-management_1.0.3.mtar",
-    "cf-undeploy": "cf undeploy incident-management --delete-services --delete-service-keys"
+    "cds-up": "cds up --to cf",
+    "cds-add-mta": "cds add mta",    
+    "cf-build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "cf-deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "cf-undeploy": "cf undeploy incident-management  --delete-services --delete-service-keys --delete-service-brokers"    
   },
   "private": true,
   "workspaces": [
