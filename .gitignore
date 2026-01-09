@@ -32,4 +32,7 @@ mta_archives/
 
 # @cap-js/cds-typer
 @cds-models
+
+# Build files
 resources/
+app/incidents/dist/
