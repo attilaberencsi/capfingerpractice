@@ -1,6 +1,6 @@
 {
   "name": "incident-management",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Incident Management",
   "repository": "https://github.com/attilaberencsi/capfingerpractice",
   "license": "MIT",
@@ -37,7 +37,6 @@
     "app/*"
   ],
   "sapux": [
-    "app/incidents",
     "app/incidents2"
   ],
   "cds": {
