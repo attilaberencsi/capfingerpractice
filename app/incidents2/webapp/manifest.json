@@ -1,11 +1,11 @@
 {
   "_version": "1.76.0",
   "sap.app": {
-    "id": "com.sapdev.eu.incidents",
+    "id": "com.sapdev.eu.incidents2",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
-      "version": "1.0.4"
+      "version": "0.0.1"
     },
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
@@ -13,11 +13,11 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.20.0",
-      "toolsId": "8797f690-8139-4738-b88a-f33f687c8b10"
+      "toolsId": "44177a48-81bd-4c80-8993-c63b8c7312c5"
     },
     "dataSources": {
       "mainService": {
-        "uri": "odata/v4/processor/",
+        "uri": "/odata/v4/processor/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -27,11 +27,11 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "Incident-manage": {
+        "Incident-manage2": {
           "semanticObject": "Incident",
-          "action": "manage",
-          "title": "{{Incident-manage.flpTitle}}",
-          "subTitle": "{{Incident-manage.flpSubtitle}}",
+          "action": "manage2",
+          "title": "{{Incident-manage2.flpTitle}}",
+          "subTitle": "{{Incident-manage2.flpSubtitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -74,7 +74,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "com.sapdev.eu.incidents.i18n.i18n"
+          "bundleName": "com.sapdev.eu.incidents2.i18n.i18n"
         }
       },
       "": {
@@ -106,6 +106,11 @@
           "pattern": "Incidents({key}):?query:",
           "name": "IncidentsObjectPage",
           "target": "IncidentsObjectPage"
+        },
+        {
+          "pattern": "Incidents({key})/conversation({key2}):?query:",
+          "name": "Incidents_conversationObjectPage",
+          "target": "Incidents_conversationObjectPage"
         }
       ],
       "targets": {
@@ -141,7 +146,25 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Incidents"
+              "contextPath": "/Incidents",
+              "navigation": {
+                "conversation": {
+                  "detail": {
+                    "route": "Incidents_conversationObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Incidents_conversationObjectPage": {
+          "type": "Component",
+          "id": "Incidents_conversationObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Incidents/conversation"
             }
           }
         }
