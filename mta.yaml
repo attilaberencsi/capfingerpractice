@@ -10,7 +10,7 @@ build-parameters:
     - builder: custom
       commands:
         - npm ci
-        - npx -p @sap/cds-dk cds build --production
+        - npx cds build --production
 modules:
   # CAP node.js application exposing OData endpoint
   - name: incident-management-srv
@@ -50,6 +50,11 @@ modules:
       - name: incident-management-html5-repo-host
         parameters:
           content-target: true
+          # Use when multitenancy/dynamic repo access is required          
+          # config:
+          #   HTML5Runtime_enabled: true          
+    # NO srv-api
+    # NO auth      
     build-parameters:
       build-result: app/
       requires:
@@ -129,11 +134,12 @@ resources:
       service: destination
       service-plan: lite
       config:
-        HTML5Runtime_enabled: true
+        HTML5Runtime_enabled: true        
         init_data:
           instance:
             existing_destinations_policy: update
             destinations:
+              # xs-app.json: "destination": "incident-management-srv-api",                
               - Name: incident-management-srv-api
                 URL: "~{srv-api/srv-url}"
                 Authentication: NoAuthentication
@@ -141,6 +147,7 @@ resources:
                 ProxyType: Internet
                 HTML5.ForwardAuthToken: true
                 HTML5.DynamicDestination: true
+              # xs-app.json: "destination": "ui5"  
               - Name: ui5
                 URL: "https://ui5.sap.com"
                 Authentication: NoAuthentication
@@ -161,6 +168,7 @@ resources:
       service: html5-apps-repo
       service-plan: app-host
 
+  # Use when multitenancy/dynamic repo access is required
   # - name: incident-management-html5-runtime
   #   type: org.cloudfoundry.managed-service
   #   parameters:
