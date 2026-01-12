@@ -28,7 +28,7 @@
     "cds-up": "cds up --to cf",
     "cds-add-mta": "cds add mta",
     "cf-build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "cf-deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "cf-deploy": "cf deploy mta_archives/archive.mtar --retries 1 --delete-services --delete-service-keys --delete-service-brokers",
     "cf-undeploy": "cf undeploy incident-management  --delete-services --delete-service-keys --delete-service-brokers",
     "watch-incidents2": "cds watch --open com.sapdev.eu.incidents2/index.html?sap-ui-xx-viewCache=false --livereload false"
   },

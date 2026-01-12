@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
 ID: incident-management
 version: 1.0.8
-description: A simple CAP project.
+description: Incident Management
 parameters:
   enable-parallel-deployments: true
   deploy_mode: html5-repo
@@ -12,12 +12,14 @@ build-parameters:
         - npm ci
         - npx -p @sap/cds-dk cds build --production
 modules:
-
+  # CAP node.js application exposing OData endpoint
   - name: incident-management-srv
     type: nodejs
     path: gen/srv
     parameters:
       buildpack: nodejs_buildpack
+      # Built in UP check provided by CAP Node.js. Used by CF to send requests to UP instances only.
+      # Reason: UP <> STARTED
       readiness-health-check-type: http
       readiness-health-check-http-endpoint: /health
     build-parameters:
@@ -25,12 +27,13 @@ modules:
     provides:
       - name: srv-api
         properties:
-          srv-url: '${default-url}'
+          srv-url: "${default-url}"
     requires:
       - name: incident-management-db
       - name: incident-management-auth
       - name: incident-management-destination
 
+  # DATABASE Deployer Application, only active during deplyment, otherwise down
   - name: incident-management-db-deployer
     type: hdb
     path: gen/db
@@ -39,6 +42,23 @@ modules:
     requires:
       - name: incident-management-db
 
+  # FRONTEND
+  - name: incident-management-app-deployer
+    type: com.sap.application.content
+    path: gen
+    requires:
+      - name: incident-management-html5-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: app/
+      requires:
+        - artifacts:
+            - comsapdeveuincidents2.zip
+          name: comsapdeveuincidents2
+          target-path: app/
+
+  # FRONTEND BUILD - Incidents plain js
   - name: comsapdeveuincidents2
     type: html5
     path: app/incidents2
@@ -46,10 +66,11 @@ modules:
       build-result: dist
       builder: custom
       commands:
-      - npm install
-      - npm run build:cf
+        - npm install
+        - npm run build:cf
       supported-platforms: []
-        
+
+  # DESTINATIONS
   - name: incident-management-destinations
     type: com.sap.application.content
     requires:
@@ -82,34 +103,15 @@ modules:
               ServiceKeyName: incident-management-auth-key
               sap.cloud.service: incidentmanagement.service
 
-  - name: incident-management-app-deployer
-    type: com.sap.application.content
-    path: gen
-    requires:
-      - name: incident-management-html5-repo-host
-        parameters:
-          content-target: true
-    build-parameters:
-      build-result: app/
-      requires:
-      - artifacts:
-        - comsapdeveuincidents2.zip
-        name: comsapdeveuincidents2
-        target-path: app/
-
 resources:
+  # DATABASE SERVICE - HDI Container
   - name: incident-management-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
       service-plan: hdi-shared
 
-  - name: incident-management-html5-repo-host
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: html5-apps-repo
-      service-plan: app-host
-
+  # AUTHENTICATION and AUTHORIZATION
   - name: incident-management-auth
     type: org.cloudfoundry.managed-service
     parameters:
@@ -117,9 +119,10 @@ resources:
       service-plan: application
       path: ./xs-security.json
       config:
-        xsappname: 'incident-management-${org}-${space}'
+        xsappname: "incident-management-${org}-${space}"
         tenant-mode: dedicated
 
+  # DESTINATION
   - name: incident-management-destination
     type: org.cloudfoundry.managed-service
     parameters:
@@ -132,14 +135,14 @@ resources:
             existing_destinations_policy: update
             destinations:
               - Name: incident-management-srv-api
-                URL: '~{srv-api/srv-url}'
+                URL: "~{srv-api/srv-url}"
                 Authentication: NoAuthentication
                 Type: HTTP
                 ProxyType: Internet
                 HTML5.ForwardAuthToken: true
                 HTML5.DynamicDestination: true
               - Name: ui5
-                URL: 'https://ui5.sap.com'
+                URL: "https://ui5.sap.com"
                 Authentication: NoAuthentication
                 Type: HTTP
                 ProxyType: Internet
@@ -148,10 +151,18 @@ resources:
         group: destinations
         properties:
           name: srv-api
-          url: '~{srv-url}'
+          url: "~{srv-url}"
           forwardAuthToken: true
-  - name: incident-management-html5-runtime
+
+  # WEBSERVER - HTML5 Application Repository
+  - name: incident-management-html5-repo-host
     type: org.cloudfoundry.managed-service
     parameters:
       service: html5-apps-repo
-      service-plan: app-runtime
+      service-plan: app-host
+
+  # - name: incident-management-html5-runtime
+  #   type: org.cloudfoundry.managed-service
+  #   parameters:
+  #     service: html5-apps-repo
+  #     service-plan: app-runtime
