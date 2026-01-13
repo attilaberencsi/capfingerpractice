@@ -116,3 +116,26 @@ Added UI5 to mta.yaml as well to the xs-app.json of the Fiori applications.
       "destination": "ui5"
     },
 ```
+
+### Disk and Memory Quota
+
+Default is 1GB. To save costs use less when not needed. If your service doing mass processing via jobs, or handling big batches You need to increase most probably.
+
+```plaintext
+  parameters:
+    buildpack: nodejs_buildpack
+    readiness-health-check-http-endpoint: /health
+    readiness-health-check-type: http
+    disk-quota: 512M
+    memory: 512M  
+```
+
+### Ignore adding node_modules folder of your workspace into the build
+
+Actually it is not needed. During the deployment, after mtar upload is done, the node module installation takes place on BTP anyway based on the package.json. So node_mosules in your workspace has nothing to do with it. So you can reduce mtar file from 20MB to 173 KB and the time needed to upload your mtar will be less than a second.
+
+```plaintext
+    build-parameters:
+      ignore:
+        - "node_modules/"
+```
