@@ -19,8 +19,7 @@
     "@sap/cds-dk": "^9",
     "cds-plugin-ui5": "^0.13.0",
     "mbt": "^1.2.29",
-    "rimraf": "^5.0.5",
-    "recursive-install" : "^1.4.0"    
+    "rimraf": "^5.0.5"
   },
   "scripts": {
     "start": "cds-serve",
@@ -36,7 +35,10 @@
     "undeploy": "cf undeploy incident-management --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-    "recursive-install" : "npm-recursive-install"
+    "recursive-install": "npx recursive-install",
+    "folder-size" : "du -h --max-depth=1 | sort -h",
+    "node_folders:list" : "find . -name 'node_modules' -type d -prune -print",
+    "node_folders:remove" : "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"    
   },
   "private": true,
   "workspaces": [
