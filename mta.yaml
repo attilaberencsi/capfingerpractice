@@ -18,6 +18,8 @@ modules:
     buildpack: nodejs_buildpack
     readiness-health-check-http-endpoint: /health
     readiness-health-check-type: http
+    disk-quota: 512M
+    memory: 512M       
   build-parameters:
     builder: npm
 - name: incident-management-db-deployer
