@@ -35,4 +35,4 @@ mta_archives/
 
 # Build files
 resources/
-app/incidents/dist/
+app/*/dist/
