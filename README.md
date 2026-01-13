@@ -2,11 +2,11 @@
 
 Project is not about functionality but proper build and deployment configuration.
 
-npm i
+`npm i`
 
-npm run "cf-build"
+`npm run "cf-build"`
 
-npm run "cf-deploy"
+`npm run "cf-deploy"`
 
 ## MTA Configuration Remarks
 
