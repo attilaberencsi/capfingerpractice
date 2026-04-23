@@ -44,7 +44,7 @@ Reason: UP <> STARTED.
 
 ### HTML5 Runtime
 
-Not needed, due no multitenancy, no dynamic access through destinations, no special BTP reuse application components and services are incorporated.
+Not needed, due no multitenancy, no dynamic access through destinations, no special BTP reuse application components and services are incorporated. Fixes duplicate HTML5 Application repository deployment.
 
 ```plaintext
   - name: incident-management-app-deployer
